@@ -553,7 +553,7 @@ function renderQualZone(){
   DATA.forEach(d=>{
     const e = sbOnly(d);
     if(e.rnk!=null && e.rnk<=8 && e.natl>=11 && e.pct>0.5){
-      items.push({cog:d.cog, nom:d.nom, gara:d.gara, cls:clsLabel(d.cat,d.cls), e});
+      items.push({cog:d.cog, nom:d.nom, gara:d.gara, cls:clsLabel(d.cat,d.cls), la28:d.la28, e});
     }
   });
   items.sort((x,y)=> (y.e.pct-x.e.pct) || (y.e.natl-x.e.natl) || (x.e.rnk-y.e.rnk));
@@ -565,7 +565,7 @@ function renderQualZone(){
   el.innerHTML = items.map(it=>
     '<div class="qual-chip">'
     + '<div class="who">'+escapeHtml(it.cog)+' '+escapeHtml(it.nom)+'</div>'
-    + '<div class="what">'+escapeHtml(it.gara)+' · '+escapeHtml(it.cls)+'</div>'
+    + '<div class="what">'+escapeHtml(it.gara)+' · '+escapeHtml(it.cls)+(it.la28?' <span class="badge-la28">LA28</span>':'')+'</div>'
     + '<div class="mark">'+escapeHtml(it.e.mark)+'</div>'
     + '<div class="rk">'+fmtRank(it.e.rnk, it.e.natl)+' · '+pct(it.e.pct)+'</div>'
     + '</div>'
